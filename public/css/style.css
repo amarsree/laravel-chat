@@ -1,0 +1,188 @@
+/* Swipe works with mouse as well but often causes text selection. */
+/* We'll deny text selecton on everything but INPUTs and TEXTAREAs. */
+#demo-page :not(INPUT):not(TEXTAREA) {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+/* Content styling. */
+dl { font-family: "Times New Roman", Times, serif; padding: 1em; }
+dt { font-size: 2em; font-weight: bold; }
+dt span { font-size: .5em; color: #777; margin-left: .5em; }
+dd { font-size: 1.25em; margin: 1em 0 0; padding-bottom: 1em; border-bottom: 1px solid #eee; }
+.back-btn { float: right; margin: 0 2em 1em 0; }
+
+
+/* my styles */
+
+
+
+
+.login_container{
+  /* background: red; */
+  padding-top: 20vh;
+  padding: auto;
+  margin: auto;
+  align-self: center;
+  width: 75%;
+}
+.login_btn_container{
+  /* background: white; */
+  /* background: red; */
+  float: right;
+}
+.login_btn{
+
+  border-radius:10px; 
+  align-self: center;
+}
+.login_opstions{
+  position: relative;
+  /* background: red; */
+  float: right;
+
+}
+
+.chat_list{
+  /* height: ; */ 
+  /* height: 500px; */ 
+  height:80vh; 
+  overflow :auto;
+  overflow-x:hidden;
+}
+
+.msg_box{
+  /* background: red; */
+  height: 90vh;
+
+
+}
+
+
+.chat_con{
+  padding: 10px;
+  padding-top: 5px;
+  padding-right: 2px;
+}
+
+.chat_convertation{
+  height: 70vh; 
+  overflow :auto;
+  overflow-x:hidden;
+}
+
+
+.typing{
+  margin: 0px;
+  padding: 0px;
+  color: green;
+}
+.typing_container{
+  margin:0px;
+  /* background: red; */
+  padding:0px; 
+}
+
+
+
+/* styling for msg buble */
+.chat_messages{
+  /* list-style-type: none; */
+}
+
+.msg{
+  margin: 2px;
+  width: 70%;
+  border-radius: 5px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+
+}
+
+
+.a{
+  font-size: 16px;
+}
+.b {/* text-align: right; */
+ font-size: 16px;
+ float: right;
+ margin-right: 10px;
+}
+
+.a p{
+  font-weight: normal;
+}
+.b p{
+  font-weight: normal;
+}
+
+.user_photo{
+  background: white;
+  height: 30px;
+  width: 30px;
+}
+
+.message{
+
+  float: right;
+  /* font-family:san-sarf; */
+  margin: 1px 2px 3px 4px;
+  
+}
+
+.chat_sending_box{
+  width: 100%;
+  display: flex;
+  /* flex-flow: row wrap; */
+  align-items: flex-start;
+}
+
+.textarea_container {
+  overflow :auto;
+  overflow-x:hidden;
+  /* background: black; */ 
+  /* background: red; */ 
+  width: 80%;
+  height: 8vh;
+  
+}
+
+.chat_sending_box textarea{
+ height: 8vh;
+ /* height: 10vh; */
+ overflow :auto;
+ overflow-x:hidden;
+ /* background: black; */
+}
+.chat_sending_box button{
+  height: 100%;
+  padding: 0px;
+  margin-left: 1%;
+  width:18%;
+}/* 
+.chat_btn{
+  margin-left:10px;
+  } */
+  .chat_sending_box button img{
+    margin:1px;
+    padding:0px;
+    height: 20px;
+    width: 20px;
+  }
+
+  .name{
+
+    /* margin:0px; */
+    /* float: left; */
+    /* align-self: left; */ 
+  }
+  .head h1{
+    /* align-items: left; */
+    /* float: left; */
+    font-size: 17px;
+    padding-left: 6%;
+    margin: 8px;
+  }
