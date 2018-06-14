@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\messages;
-use App\msg_hst;
+use App\msghst;
 use App\User;
 use Illuminate\Http\Request;
 use Response;
@@ -61,6 +61,32 @@ class MessagesController extends Controller
         $messages->msg = $request->msg;
         $messages->status = 1;
         $messages->save();
+
+       
+    
+         if($request->reciver<$request->sender){
+                $conv_id = $request->reciver."_".$request->sender;
+         }else{
+                $conv_id = $request->sender."_".$request->reciver;
+         }
+         $d = msghst::where("con_id",'=' ,$conv_id)->first();
+         if($d=== null){
+            // creating new recond 
+            $msghst = new msghst;
+            $msghst->con_id = $conv_id;
+            $msghst->msg = $request->msg;
+            $msghst->name = user::find($request->reciver)->name;
+            $msghst->user_id = auth::id();
+            $msghst->receiver = $request->reciver;
+            $msghst->unread_count = 1;
+            $msghst->save();
+         }else{
+            // updating the record 
+            $this->update($request,$conv_id);   
+        }
+
+
+        
      }
 
     /**
@@ -74,19 +100,14 @@ class MessagesController extends Controller
     // $user = messages::where('sender',auth::id())->where('receiver',$id)->get();
     // $user = messages::where('sender',auth::id())->andwhere("receiver",$id)->get();
 
-
-
            $user = messages::where(function($query) use ($id)  {
                 $query->where('sender', '=', auth::id())
                       ->orWhere('sender', '=', $id);
             })->where(function ($query) use ($id) {
                 $query->where('receiver', '=', auth::id())
                       ->orWhere('receiver', '=', $id);
-            })->get();
-                    
-       //$user = messages::where('sender',auth::id())->where('receiver',$id)->distinct('sender')->get();
-    
-    // return Response::json($user);
+            })->orderBy('mid')->get();
+      
      return ($user);
       // $this->createtable($id); 
        /* $conversation = DB::table('1')->get();
@@ -109,18 +130,20 @@ class MessagesController extends Controller
     {
         //
     }*/
-
-/*    *
+/*
+    *
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     
+     */
     public function update(Request $request, $id)
     {
-        //
-    }*/
+       DB::table('msghst')
+            ->where('con_id', $id)
+            ->update(['msg' => $request->msg,'updated_at' => now()]);
+    }
 
     /**
      * Remove the specified resource from storage.

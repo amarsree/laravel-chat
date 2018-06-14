@@ -10,7 +10,7 @@
            <!--      <div class="card-header">Login</div> -->
   <div data-role="main"  class="ui-content main">
  <div class="login_container">
-           <form method="POST" action="{{ route('login') }}">
+           <form method="POST"  action="{{ route('login') }}" data-ajax="false">
             @csrf
                  <div class="input_fields">
 <!-- gmail -->

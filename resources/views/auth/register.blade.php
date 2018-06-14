@@ -8,7 +8,7 @@
 
 
  <div data-role="main"  class="ui-content main">
-<form method="POST" action="{{ route('register') }}">
+<form method="POST" action="{{ route('register') }}" data-ajax="false">
     @csrf
 
     <div class="form-group row">

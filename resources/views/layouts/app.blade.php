@@ -11,11 +11,11 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
 
-
     <script src="{{ asset('js/jquery-1.11.1.min.js') }}"></script>
     <script src="{{ asset('js/jquery.mobile-1.4.5.min.js') }}"></script>
     <script  src="{{ asset('js/script.js') }}"></script> 
  
+
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -89,8 +89,11 @@
   
 
 
-    @yield('content')
+@yield('content')
 
+  @if(\Auth::check())
+   <script type="text/javascript" src="{{ asset('js/chat.js') }}"></script>
+  @endif
 
   <!-- Scripts -->
   <!-- <script src="{{ asset('js/app.js') }}"></script> --> 

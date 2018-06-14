@@ -15,14 +15,20 @@
 
 Route::get('/', function () {
 	//auth::logout();
-    return view('auth.login');
-});
+    if (auth::id()===null) {
+            return view('auth.login');
+        }else{
+             return view('home');
+        }
+});/**/
 
 
-Route::get('/achat', function () {
+// its a main page where chat is done
+
+Route::get('/chat', function () {
     //auth::logout();
   return view('home');
-})->middleware("auth");
+})->name('home')->middleware("auth");
 
 /*
  Route::get('register1', function () {
@@ -35,8 +41,11 @@ Route::get('/achat', function () {
 Route::resource('guest', 'GuestController');
 Route::resource('guest/logout', 'GuestController@destroy');
 
-
+//users route
 Route::resource('api/users', 'ShowUsersController')->middleware('auth');
+Route::get('api/user/left/', 'ShowUsersController@load_msg_his_left')->middleware('auth');
+
+
 Route::resource('messages', 'MessagesController')->middleware('auth');
 
 Route::get('messages/right/{id}', 'MessagesController@new_msg')->middleware('auth');

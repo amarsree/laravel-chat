@@ -4,8 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class msg_hst extends Model
+class msghst extends Model
 {
+    protected $table = 'msghst';
+
     protected $fillable = [
         'con_id', 
         'msg', 

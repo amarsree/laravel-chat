@@ -8,14 +8,15 @@
  </div>
 
  <div class="login_container">
-       <form method="POST" action="{{ route('login') }}">
+       <form method="POST" action="{{ route('login') }}" data-ajax="false">
             @csrf
             <div class="input_fields">
               <!-- gmail -->
               <label for="email" class="ui-hidden-accessible">E-Mail Addres</label>
               <input id="email" placeholder="Email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
-
+                
               @if ($errors->has('email'))
+              var_dump($errors)
               <span class="invalid-feedback">
                 <strong>{{ $errors->first('email') }}</strong>
               </span>
