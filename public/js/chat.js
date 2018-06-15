@@ -1,5 +1,29 @@
 $(document).ready(function (){//alert('enter')
 auth_id=$("#sender").val();
+  var socket = io('http://localhost:3000')       
+socket.on("private-"+auth_id+":App\\Events\\EventName", function(message){
+   
+  insert_msg_to_view(message.data.sender,message.data.message)
+});
+
+
+    /*      var socket = io('http://localhost:3000');
+   // var socket = io('http://192.168.10.10:3000');
+        console.log(socket);
+        socket.on("private-"+auth_id+"):App\\Events\\EventName", function(message){
+            console.log(message.data);
+            // increase the power everytime we load test route
+            insert_msg_to_view(message.data.sender,message.data.message)
+          //  $('#power').text( message.data.message) ;
+        });*/
+
+     /*   socket.on("test:App\\Events\\EventName", function(message){
+            // increase the power everytime we load test route
+            $('#power').text(parseInt($('#power').text()) + parseInt(message.data.power));
+        });*/
+
+
+
 	//load_users_right()
 	//laod_msg_his_left();
 	//new_messages(1);
@@ -249,7 +273,7 @@ function laod_msg_his_left() {
         url: "api/user/left/",
         //data: { uid : uid },
         success: function(a)
-        {console.log(a)
+        {//console.log(a)
     		for (var i = 0; i < a.length; i++) {
     	/*		if(a[i].receiver==auth_id){
     				//a[i].receiver=a[i].user_id;

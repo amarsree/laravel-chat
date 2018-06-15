@@ -77,8 +77,8 @@ Route::get('/logout', function () {
 //Route::get('/home', 'HomeController@index')->name('home');
 
 
-/*
-Route::get('/', function() {
+
+Route::get('/node', function() {
     // this doesn't do anything other than to
     // tell you to go to /fire
     return "go to /fire";
@@ -93,4 +93,4 @@ Route::get('fire', function () {
 Route::get('test', function () {
     // this checks for the event
     return view('test');
-});*/
+});

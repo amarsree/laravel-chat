@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/theme-classic.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
     <script src="{{ asset('js/jquery-1.11.1.min.js') }}"></script>
     <script src="{{ asset('js/jquery.mobile-1.4.5.min.js') }}"></script>
     <script  src="{{ asset('js/script.js') }}"></script> 

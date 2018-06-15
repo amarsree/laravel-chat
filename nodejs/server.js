@@ -6,7 +6,7 @@ server.listen(3030, function () {
 	console.log('Seerver is Up');
 });
 
-io.on('connection', function (socket) {
+io.on('connection', function (socket) {//console.log(socket)
 	socket.on('message', function (message) {
 		console.log(message);
 		io.emit('message', message)

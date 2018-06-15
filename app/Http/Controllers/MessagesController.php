@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Auth;
+use  App\Events\EventName;
 
 class MessagesController extends Controller
 {
@@ -62,13 +63,16 @@ class MessagesController extends Controller
         $messages->status = 1;
         $messages->save();
 
-       
-    
+        //sending new event
          if($request->reciver<$request->sender){
                 $conv_id = $request->reciver."_".$request->sender;
          }else{
                 $conv_id = $request->sender."_".$request->reciver;
          }
+         event(new EventName($request));
+
+       
+    
          $d = msghst::where("con_id",'=' ,$conv_id)->first();
          if($d=== null){
             // creating new recond 

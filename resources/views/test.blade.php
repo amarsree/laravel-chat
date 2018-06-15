@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    <p id="power">0</p>
+    <p id="power"></p>
 @stop
 
 @section('footer')
@@ -12,14 +12,14 @@
    // var socket = io('http://192.168.10.10:3000');
         console.log(socket);
         socket.on("test-channel:App\\Events\\EventName", function(message){
-            console.log("hai")
+            console.log(message.data);
             // increase the power everytime we load test route
-            //$('#power').text(parseInt($('#power').text()) + parseInt(message.data.power));
+            $('#power').text( message.data.message) ;
         });
 
-        socket.on("test:App\\Events\\EventName", function(message){
+     /*   socket.on("test:App\\Events\\EventName", function(message){
             // increase the power everytime we load test route
             $('#power').text(parseInt($('#power').text()) + parseInt(message.data.power));
-        });
+        });*/
     </script>
 <@stop
