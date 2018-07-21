@@ -26,7 +26,7 @@ To use this projet clone it and
   
   run the server by typing the commend "php artisan serve" 
   
-  since we are using node to handle the client in real time we need to run the node js rever too
+  since we are using node to handle the client in real time we need to run the node js server too
   
   to run in node srever open a new terminal in the folder and type the comment "node socket.js"
   
