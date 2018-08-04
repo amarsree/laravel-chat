@@ -13,10 +13,13 @@ class CreateMsgHst extends Migration
      */
     public function up()
     {
-          Schema::create('MsgHst', function (Blueprint $table) {
+          Schema::create('msghst', function (Blueprint $table) {
                 $table->increments('id');
                 $table->char('con_id');
+                $table->string('name');
                 $table->text('msg');
+                $table->string('user_id');
+                $table->string('receiver');
                 $table->char('unread_count', 1);
                 $table->timestamps();
             });
@@ -29,6 +32,6 @@ class CreateMsgHst extends Migration
      */
     public function down()
     {
-       Schema::dropIfExists();
+       Schema::dropIfExists('msghst');
     }
 }

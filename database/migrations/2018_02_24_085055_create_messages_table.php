@@ -17,12 +17,15 @@ class CreateMessagesTable extends Migration
         {
             Schema::create('messages', function (Blueprint $table) {
                 $table->increments('mid');
-                $table->integer('sender');
-                $table->integer('receiver');
+                $table->integer('sender')->foreign('sender')->references('id')->on('user')->onDelete('cascade');
+                $table->integer('receiver')->foreign('receiver')->references('id')->on('user')->onDelete('cascade');
                 $table->text('msg');
                 $table->char('status', 2);
                 $table->timestamps();
             });
+
+
+           
         }
     /**
      * Reverse the migrations.
@@ -31,6 +34,6 @@ class CreateMessagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists();
+        Schema::dropIfExists('messages');
     }
 }
