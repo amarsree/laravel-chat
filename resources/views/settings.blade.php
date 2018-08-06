@@ -50,7 +50,7 @@
 		</div>
 	
 	<div data-role="footer">
-		<h1><a href="/logout">Logout</a></h1>
+		<h1><a href="{{ url('logout') }}">Logout</a></h1>
 	</div>
 </div>
 

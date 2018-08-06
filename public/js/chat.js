@@ -1,28 +1,25 @@
 $(document).ready(function (){//alert('enter')
 auth_id=$("#sender").val();
-  var socket = io('http://localhost:3000')       
+reciver=$("#reciver").val();
+//alert(reciver)
+ 
+ var host =window.location.href
+ var res = host.split(":");
+ var res1 = res[1].split("/");
+console.log(res1)
+  host=  res[0]+'://'+res1[2]+":"+"3000";
+  var socket = io(host)
 socket.on("private-"+auth_id+":App\\Events\\EventName", function(message){
-   
-  insert_msg_to_view(message.data.sender,message.data.message)
+//alert(message.data.sender)
+	if(reciver==message.data.sender){
+  			insert_msg_to_view(message.data.sender,message.data.message);
+	}
+	//alert(res)
+	// depends in file direscory
+   var audio = new Audio('../public/plucky.mp3')
+   //alert(res[0]+res[1]+'/plucky.mp3')
+        audio.play()
 });
-
-
-    /*      var socket = io('http://localhost:3000');
-   // var socket = io('http://192.168.10.10:3000');
-        console.log(socket);
-        socket.on("private-"+auth_id+"):App\\Events\\EventName", function(message){
-            console.log(message.data);
-            // increase the power everytime we load test route
-            insert_msg_to_view(message.data.sender,message.data.message)
-          //  $('#power').text( message.data.message) ;
-        });*/
-
-     /*   socket.on("test:App\\Events\\EventName", function(message){
-            // increase the power everytime we load test route
-            $('#power').text(parseInt($('#power').text()) + parseInt(message.data.power));
-        });*/
-
-
 
 	//load_users_right()
 	//laod_msg_his_left();
@@ -135,7 +132,7 @@ function send_msg_to_db(reciver,sender,msg,token)
 
 //this is used do insert msg in to user view
 function insert_msg_to_view(sender,msg){
-	//alert(user_id)
+	
 	if (sender==auth_id) {
 		class_name = "b";
 	}else{
@@ -152,13 +149,7 @@ function insert_msg_his_name(id,name,count){
 
 	 /*$('#chat_his').append('<li class="ui-li-has-count ui-first-child ui-last-child" id="chat_name" value="'+id+'" class="ui-first-child ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r"><div class="name_con">'+name+'</div><span class="ui-li-count round">'+count+'</span></a></li>');
 	 */
-	
-
 }
-
-
-
-
 
 // this is ajax funtrion used to send data to database
 //sender varable is id of sender integer datatype

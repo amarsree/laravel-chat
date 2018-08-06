@@ -6,8 +6,8 @@ var redis = new Redis();
 
 
 redis.subscribe('test-channel.2', function(err, count) {
-	//console.log(redis);
-	console.log(count);
+  //console.log(redis);
+  console.log(count);
 });
 
 
@@ -15,7 +15,7 @@ redis.subscribe('test-channel.2', function(err, count) {
 redis.on('message', function(channel, message) {
     console.log('Message Recieved: ' + message);
     message = JSON.parse(message);
-   // console.log(message);	
+   // console.log(message); 
     io.emit(channel + ':' + message.event, message.data);
 });
 http.listen(3000, function(){
@@ -36,7 +36,7 @@ function handler(req, res) {
 io.sockets.on('connection', function (socket) {
     console.log('connection made');
  var redisClient = redis.createClient('6379', '127.0.0.1');
-	
+  
 
  redisClient.psubscribe('*', function(socket) {});
 
@@ -47,7 +47,7 @@ io.sockets.on('connection', function (socket) {
  });
 
  io.sockets.on('disconnect', function () {
- 	console.log('disconnect')
+  console.log('disconnect')
      redisClient.quit();
  });
-});
+}); 
