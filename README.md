@@ -45,7 +45,7 @@ using
 --> nodejs
 -->redis
 
-Having problen with real socket connection ..???
+Having problem with real socket connection ..???
 open chat.js in public/js folder edit host variable dased on ur server url
 and also audio variable if needed...
 
