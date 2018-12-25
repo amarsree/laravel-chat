@@ -26,9 +26,9 @@ To use this projet clone it and
   
   run the server by typing the commend "php artisan serve" 
   
-  since we are using node to handle the client in real time we need to run the node js server too
+  since we are using node to handle the requests in real time we need to run the node js server too
   
-  to run in node srever open a new terminal in the folder and type the comment "node socket.js"
+  To run node srever open a new terminal in the folder and type the commend "node socket.js"
   
   now run the redis server by clicking on redis-server.exe 
   
